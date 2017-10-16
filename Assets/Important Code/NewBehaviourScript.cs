@@ -3,59 +3,79 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour {
+	public static int score; 
+	public static int oldScore;
 	float time; 
-	int theScore; 
 	bool theMessage; 
 	int bronzeOre; 
 	int silverOre; 
 	int miningTime; 
-	public int bronzeSupply;
-	public int silverSupply;
-	bool done1;  
+	public static int bronzeSupply;
+	public static int silverSupply; 
 	int miningTimeAdded;
+	public GameObject cubePrefab; 
 	public GameObject bronze;
 	int silverPlayer;
-	public GameObject cubePrefab;
+	public GameObject silver;
 	Vector3 cubePosition;
-	GameObject currentCube;
 	float xPosition; 
-	float zPosition;
+	public int goldScore;
+	public GameObject gold;
+	Vector3 cubePosition1; 
+	int max = bronzeSupply + silverSupply + 1;
+
 	// Use this for initialization
 	void Start () {
 		bronzeOre = 0; 
 		silverOre = 0; 
-		miningTime = 2;
-		bronzeSupply = 3; 
-		silverSupply = 3;
-		done1 = false;
+		miningTime = 4;
+		bronzeSupply = 4; 
+		silverSupply = 4;
 		miningTimeAdded = 2;
-		xPosition = Random.Range(1,7);
-		zPosition = Random.Range(1,7); 
-
-		cubePosition = new Vector3 (xPosition, 0, zPosition) ;
-		currentCube = Instantiate (cubePrefab, cubePosition, Quaternion.identity);  
-		currentCube.GetComponent<Renderer> ().material.color = Color.red;
+		xPosition = 0; 
+		score = 0;
+		cubePosition = new Vector3 (xPosition, 0, 0) ;
+		cubePosition1 = new Vector3 (0, 100, 100);
+		bronze = Instantiate (cubePrefab, cubePosition1, Quaternion.identity);  
+		bronze.GetComponent <Renderer> ().material.color = Color.red;
+		silver = Instantiate (cubePrefab, cubePosition1, Quaternion.identity);  
+		silver.GetComponent <Renderer> ().material.color = Color.gray;
+		goldScore = 0;
+		gold = Instantiate (cubePrefab, cubePosition1, Quaternion.identity);  
+		gold.GetComponent <Renderer> ().material.color = Color.yellow;
 
 	}
 
-	
 	// Update is called once per frame
 	void Update () {
-		if (Time.time <= miningTime) {
-			
-			if (bronzeOre < 3) {
+		if (Time.time >= miningTime) {
+			for (int i = 0; i < max; i += 10) {
+				Collider[] intersecting = Physics.OverlapSphere(new Vector3(i,0,0),0.01f);
+				if (intersecting.Length == 0) {
+					xPosition = i;
+				}
+				if (bronzeSupply != 0) {
 				bronzeOre += 1 ; 
 				print ("bronzeOre =" + bronzeOre); 
 				bronzeSupply -= 1;
+				cubePosition = new Vector3 (xPosition += 10, 0, 0) ;
+				Instantiate (bronze, cubePosition, Quaternion.identity);
+				bronze.GetComponent <Renderer> ().material.color = Color.red; 
 
 			} 
 
-			if (silverOre < 3 && bronzeSupply == 0) {
+			if (silverSupply != 0 && bronzeSupply == 0) {
 				silverOre += 1; 
 				print ("silverOre =" + silverOre); 
+				cubePosition = new Vector3 (xPosition += 10, 0, 0);
 				silverSupply -= 1; 
+				Instantiate (silver, cubePosition, Quaternion.identity);
+				silver.GetComponent <Renderer> ().material.color = Color.grey; 
 			}
 			miningTime += miningTimeAdded;
 		}
-	}				 
+
+	}
+
+}
 }
