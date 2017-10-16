@@ -125,7 +125,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -154,6 +154,10 @@ Prefab:
     - target: {fileID: 100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_Name
       value: Floor2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
@@ -236,11 +240,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.000010431
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 0.00000047684
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -269,6 +273,14 @@ Prefab:
     - target: {fileID: 100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
       propertyPath: m_Name
       value: Floor2 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6500000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 2}
@@ -300,11 +312,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b57c1e92a62844d486eec6adf8e7307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bronzeSupply: 0
-  silverSupply: 0
-  cubePrefab: {fileID: 1077875662087104, guid: 2bba037d5af214158a2a262e53783d13, type: 2}
-  bronze: {fileID: 1077875662087104, guid: 2bba037d5af214158a2a262e53783d13, type: 2}
-  silver: {fileID: 1862356315785252, guid: c01d26bd7bdde442ebd4c36dba301be2, type: 2}
+  bronzePrefab: {fileID: 1276301680101646, guid: 6c5866d37bba843578e55b937881dbbd,
+    type: 2}
+  bronze: {fileID: 1276301680101646, guid: 6c5866d37bba843578e55b937881dbbd, type: 2}
+  silver: {fileID: 1362191170072242, guid: 0cff630c37a0c473fa9223af5f66b28c, type: 2}
+  goldScore: 0
+  gold: {fileID: 1710396816505934, guid: 26ce9f9891c5f40c2afdabda29416df6, type: 2}
+  silverPrefab: {fileID: 1362191170072242, guid: 0cff630c37a0c473fa9223af5f66b28c,
+    type: 2}
+  goldPrefab: {fileID: 1710396816505934, guid: 26ce9f9891c5f40c2afdabda29416df6, type: 2}
 --- !u!4 &1029264482
 Transform:
   m_ObjectHideFlags: 0

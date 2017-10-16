@@ -25,6 +25,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	int max = bronzeSupply + silverSupply + 1;
 	public GameObject silverPrefab;
 	public GameObject goldPrefab;
+	int goldOre;
 
 	// Use this for initialization
 	void Start () {
@@ -45,6 +46,7 @@ public class NewBehaviourScript : MonoBehaviour {
 		goldScore = 0;
 		gold = Instantiate (goldPrefab, cubePosition1, Quaternion.identity);  
 		gold.GetComponent <Renderer> ().material.color = Color.yellow;
+		goldOre = 0;
 
 	}
 
@@ -55,7 +57,9 @@ public class NewBehaviourScript : MonoBehaviour {
 				Collider[] intersecting = Physics.OverlapSphere (new Vector3 (i, 0, 0), 0.01f);
 				if (intersecting.Length == 0) {
 					xPosition = i;
-				} 
+				}
+			}
+			if (xPosition < 80) {
 				if (bronzeSupply != 0) {
 					bronzeOre += 1; 
 					print ("bronzeOre =" + bronzeOre); 
@@ -63,7 +67,7 @@ public class NewBehaviourScript : MonoBehaviour {
 					cubePosition = new Vector3 (xPosition += 10, 0, 0);
 					Instantiate (bronze, cubePosition, Quaternion.identity);
 					bronze.GetComponent <Renderer> ().material.color = Color.red; 
-
+					}
 				} 
 
 				if (silverSupply != 0 && bronzeSupply == 0) {
@@ -74,8 +78,13 @@ public class NewBehaviourScript : MonoBehaviour {
 					Instantiate (silver, cubePosition, Quaternion.identity);
 					silver.GetComponent <Renderer> ().material.color = Color.grey; 
 				}
+				if (silverSupply == 2 && bronzeSupply == 2) {
+					gold = Instantiate (goldPrefab, new Vector3 (30, 0, 10), Quaternion.identity);  
+					gold.GetComponent <Renderer> ().material.color = Color.yellow;
+					goldOre += 1; 
+					print ("You found a gold! Gold ore = " + goldOre);
+				}
 				miningTime += miningTimeAdded;
 			}
 		}
 	}
-}
