@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class goldScore : MonoBehaviour {
+	NewBehaviourScript newBehaviorScript;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,5 +18,6 @@ public class goldScore : MonoBehaviour {
 	void OnMouseUp() {
 		NewBehaviourScript.score += 100;
 		gameObject.SetActive (false);
+
 	}
 }

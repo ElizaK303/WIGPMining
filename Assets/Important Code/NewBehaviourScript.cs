@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,6 +27,7 @@ public class NewBehaviourScript : MonoBehaviour {
 	public GameObject silverPrefab;
 	public GameObject goldPrefab;
 	int goldOre;
+	public Text printScore;
 
 	// Use this for initialization
 	void Start () {
@@ -47,11 +49,12 @@ public class NewBehaviourScript : MonoBehaviour {
 		gold = Instantiate (goldPrefab, cubePosition1, Quaternion.identity);  
 		gold.GetComponent <Renderer> ().material.color = Color.yellow;
 		goldOre = 0;
-
+		PrintScore ();
 	}
 
 	// Update is called once per frame
 	void Update () {
+		PrintScore ();
 		if (Time.time >= miningTime) {
 			for (int i = 0; i < max; i += 10) {
 				Collider[] intersecting = Physics.OverlapSphere (new Vector3 (i, 0, 0), 0.01f);
@@ -87,4 +90,7 @@ public class NewBehaviourScript : MonoBehaviour {
 				miningTime += miningTimeAdded;
 			}
 		}
+	void PrintScore() {
+		printScore.text = "Your score = " + score.ToString ();
 	}
+}
