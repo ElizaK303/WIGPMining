@@ -91,6 +91,6 @@ public class NewBehaviourScript : MonoBehaviour {
 			}
 		}
 	void PrintScore() {
-		printScore.text = "Your score = " + score.ToString ();
+		printScore.text = "Your score from your last round = " + score.ToString ();
 	}
 }
